@@ -1,4 +1,4 @@
-package com.brunomilitzer.springdatarest;
+package com.brunomilitzer.springdatarest.employee;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
