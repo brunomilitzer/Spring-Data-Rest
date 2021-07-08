@@ -1,9 +1,12 @@
 package com.brunomilitzer.eventmanagement.entities;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import javax.persistence.Entity;
 import java.util.Objects;
 
 @Entity
+@JsonPropertyOrder( { "resourceId" } )
 public class Venue extends AbstractEntity {
 
     private static final long serialVersionUID = 2762249379844290211L;
@@ -84,6 +87,11 @@ public class Venue extends AbstractEntity {
     public void setPostalCode( final String postalCode ) {
 
         this.postalCode = postalCode;
+    }
+
+    public Long getResourceId() {
+
+        return this.id;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.brunomilitzer.eventmanagement.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -16,6 +17,7 @@ public abstract class AbstractEntity implements Serializable {
     @Column( nullable = false, updatable = false )
     protected Long id;
 
+    @JsonIgnore
     @CreationTimestamp
     @Column( updatable = false )
     protected Instant created;

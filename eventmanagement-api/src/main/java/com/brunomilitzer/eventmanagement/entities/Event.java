@@ -1,5 +1,9 @@
 package com.brunomilitzer.eventmanagement.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import org.springframework.data.rest.core.annotation.RestResource;
+
 import javax.persistence.*;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -7,6 +11,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
+@JsonPropertyOrder( { "resourceId" } )
 public class Event extends AbstractEntity {
 
     private static final long serialVersionUID = -5550712730873347005L;
@@ -15,6 +20,8 @@ public class Event extends AbstractEntity {
     private String description;
     private ZonedDateTime startTime;
     private ZonedDateTime endTime;
+
+    @JsonProperty( "zId" )
     private ZoneId zoneId;
     private Boolean started;
 
@@ -26,6 +33,7 @@ public class Event extends AbstractEntity {
     private Set<Participant> participants;
 
     @ManyToOne( fetch = FetchType.EAGER, cascade = CascadeType.ALL )
+    @RestResource( exported = false )
     private Venue venue;
 
     public String getName() {
@@ -118,6 +126,11 @@ public class Event extends AbstractEntity {
         this.venue = venue;
     }
 
+    public Long getResourceId() {
+
+        return this.id;
+    }
+
     @Override
     public boolean equals( final Object obj ) {
 
@@ -131,3 +144,4 @@ public class Event extends AbstractEntity {
     }
 
 }
+

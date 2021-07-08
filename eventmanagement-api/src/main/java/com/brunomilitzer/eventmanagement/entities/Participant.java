@@ -1,9 +1,12 @@
 package com.brunomilitzer.eventmanagement.entities;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@JsonPropertyOrder( { "resourceId" } )
 public class Participant extends AbstractEntity {
 
     private static final long serialVersionUID = -4046642783134648908L;
@@ -58,6 +61,11 @@ public class Participant extends AbstractEntity {
     public void setEvent( final Event event ) {
 
         this.event = event;
+    }
+
+    public Long getResourceId() {
+
+        return this.id;
     }
 
     @Override
